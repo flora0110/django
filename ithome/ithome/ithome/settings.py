@@ -29,8 +29,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# 創建的 apps 放進來這裡，配合著 migrate，則它就會去監督該 apps 的 models(資料庫的型態)
 INSTALLED_APPS = [
+    'vendor.apps.VendorConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -72,7 +73,7 @@ WSGI_APPLICATION = 'ithome.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
-
+# using sqlite
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',

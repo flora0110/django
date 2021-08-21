@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 urlpatterns = [
-    path('welcome/', include('welcome.urls')),
+    path('welcome/', include('welcome.urls')),# 導向welcome的URLconf module
     #include : 將 weclome.urls 下的所有 url 前面都冠上 welcome/
     path('admin/', admin.site.urls),
 ]
