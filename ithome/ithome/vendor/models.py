@@ -1,3 +1,4 @@
+from django.urls import reverse
 from django.db import models
 from django.contrib import admin
 from django.utils.translation import gettext_lazy as _
@@ -13,6 +14,9 @@ class Vendor(models.Model):  # class Vendor 繼承 django.db.models.Model
 
     def __str__(self):
         return self.vendor_name
+
+    def get_absolute_url(self):
+        return reverse("vendor:vendor_id", kwargs={"id": self.id})
 
 
 class Food(models.Model):
