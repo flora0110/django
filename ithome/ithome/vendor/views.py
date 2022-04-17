@@ -1,10 +1,14 @@
 
+from django.views.generic import UpdateView  # 新增
 from django.views.generic import ListView, DetailView  # 新增
 from django.shortcuts import get_object_or_404  # 新增
 from django.http import Http404
 from .forms import VendorForm, RawVendorForm  # 要記得 import 相對應的 Model Form 唷!
 from django.shortcuts import render
 from .models import Vendor
+from django.views.generic import CreateView
+from django.utils.translation import gettext_lazy as _  # 新增
+from django import forms
 # Create your views here.
 
 '''
@@ -64,3 +68,39 @@ class VendorDetail(DetailView):
     model = Vendor
     # queryset = Vendor.objects.all()
     template_name = 'vendors/vendor_detail2.html'
+
+
+# modelForm
+
+
+class VendorModelForm(forms.ModelForm):
+    class Meta:
+        model = Vendor
+        fields = '__all__'
+        # fields = (
+        #         'vendor_name',
+        #         'store_name',
+        #         'phone_number',
+        #         'address',
+        # )
+        labels = {
+            'vendor_name': _('攤販名稱'),
+            'store_name': _('店名'),
+            'phone_number': _('電話'),
+            'address': _('地址'),
+        }
+
+# CreateView
+
+
+class VendorCreateView(CreateView):
+    form_class = VendorModelForm
+    # model = Vendor
+    # fields= ['vendor_name', 'store_name']
+    template_name = 'vendors/vendor_create.html'
+
+
+class VendorUpdateView(UpdateView):
+    form_class = VendorModelForm
+    template_name = 'vendors/vendor_create.html'
+    queryset = Vendor.objects.all()
