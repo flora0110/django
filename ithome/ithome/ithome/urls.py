@@ -22,5 +22,7 @@ from .views import HomePage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
+    path('vendor/', include('vendor.urls')),
+    path('podcast/', include('podcast.urls')),
     path('', HomePage.as_view(), name='home'),
     ]

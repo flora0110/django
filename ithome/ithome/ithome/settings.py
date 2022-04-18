@@ -15,7 +15,8 @@ import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
@@ -41,6 +42,7 @@ SITE_ID = 1
 # 創建的 apps 放進來這裡，配合著 migrate，則它就會去監督該 apps 的 models(資料庫的型態)
 INSTALLED_APPS = [
     'vendor.apps.VendorConfig',
+    'podcast.apps.PodcastConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
